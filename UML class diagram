@@ -1,0 +1,11 @@
+CryptoManager
+--------------------------------
++ isStringInBounds(plainText: String): boolean
++ caesarEncryption(plainText: String, key: int): String
++ caesarDecryption(encryptedText: String, key: int): String
++ bellasoEncryption(plainText: String, bellasoStr: String): String
++ bellasoDecryption(encryptedText: String, bellasoStr: String): String
+--------------------------------
+- LOWER_RANGE: char
+- UPPER_RANGE: char
+--------------------------------
