@@ -1,0 +1,61 @@
+package your.package.project3;
+
+public class CryptoManager {
+    private static final char LOWER_RANGE = ' ';
+    private static final char UPPER_RANGE = '_';
+
+    public static boolean isStringInBounds(String plainText) {
+        for (int i = 0; i < plainText.length(); i++) {
+            char c = plainText.charAt(i);
+            if (c < LOWER_RANGE || c > UPPER_RANGE) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static String caesarEncryption(String plainText, int key) {
+        if (!isStringInBounds(plainText)) {
+            return "The selected string is not in bounds, Try again.";
+        }
+        StringBuilder encryptedText = new StringBuilder();
+        for (int i = 0; i < plainText.length(); i++) {
+            char c = plainText.charAt(i);
+            int offset = (c + key - LOWER_RANGE) % (UPPER_RANGE - LOWER_RANGE + 1) + LOWER_RANGE;
+            encryptedText.append((char) offset);
+        }
+        return encryptedText.toString();
+    }
+
+    public static String caesarDecryption(String encryptedText, int key) {
+        StringBuilder decryptedText = new StringBuilder();
+        for (int i = 0; i < encryptedText.length(); i++) {
+            char c = encryptedText.charAt(i);
+            int offset = (c - key - LOWER_RANGE + UPPER_RANGE - LOWER_RANGE + 1) % (UPPER_RANGE - LOWER_RANGE + 1) + LOWER_RANGE;
+            decryptedText.append((char) offset);
+        }
+        return decryptedText.toString();
+    }
+
+    public static String bellasoEncryption(String plainText, String bellasoStr) {
+        StringBuilder encryptedText = new StringBuilder();
+        for (int i = 0; i < plainText.length(); i++) {
+            char plainChar = plainText.charAt(i);
+            char bellasoChar = bellasoStr.charAt(i % bellasoStr.length());
+            int offset = (plainChar + bellasoChar - LOWER_RANGE) % (UPPER_RANGE - LOWER_RANGE + 1) + LOWER_RANGE;
+            encryptedText.append((char) offset);
+        }
+        return encryptedText.toString();
+    }
+
+    public static String bellasoDecryption(String encryptedText, String bellasoStr) {
+        StringBuilder decryptedText = new StringBuilder();
+        for (int i = 0; i < encryptedText.length(); i++) {
+            char encryptedChar = encryptedText.charAt(i);
+            char bellasoChar = bellasoStr.charAt(i % bellasoStr.length());
+            int offset = (encryptedChar - bellasoChar - LOWER_RANGE + UPPER_RANGE - LOWER_RANGE + 1) % (UPPER_RANGE - LOWER_RANGE + 1) + LOWER_RANGE;
+            decryptedText.append((char) offset);
+        }
+        return decryptedText.toString();
+    }
+}
