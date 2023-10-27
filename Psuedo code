@@ -1,0 +1,37 @@
+isStringInBounds(plainText):
+    for each character c in plainText:
+        if c is not in the allowable range:
+            return false
+    return true
+
+caesarEncryption(plainText, key):
+    if not isStringInBounds(plainText):
+        return "The selected string is not in bounds, Try again."
+    Initialize an empty string encryptedText
+    for each character c in plainText:
+        calculate the offset as ((c + key - LOWER_RANGE) % (UPPER_RANGE - LOWER_RANGE + 1)) + LOWER_RANGE
+        append the character corresponding to the offset to encryptedText
+    return encryptedText
+
+caesarDecryption(encryptedText, key):
+    Initialize an empty string decryptedText
+    for each character c in encryptedText:
+        calculate the offset as ((c - key - LOWER_RANGE + UPPER_RANGE - LOWER_RANGE + 1) % (UPPER_RANGE - LOWER_RANGE + 1)) + LOWER_RANGE
+        append the character corresponding to the offset to decryptedText
+    return decryptedText
+
+bellasoEncryption(plainText, bellasoStr):
+    Initialize an empty string encryptedText
+    for each character c in plainText:
+        get the corresponding character from bellasoStr by cycling through it
+        calculate the offset as ((plainChar + bellasoChar - LOWER_RANGE) % (UPPER_RANGE - LOWER_RANGE + 1)) + LOWER_RANGE
+        append the character corresponding to the offset to encryptedText
+    return encryptedText
+
+bellasoDecryption(encryptedText, bellasoStr):
+    Initialize an empty string decryptedText
+    for each character c in encryptedText:
+        get the corresponding character from bellasoStr by cycling through it
+        calculate the offset as ((encryptedChar - bellasoChar - LOWER_RANGE + UPPER_RANGE - LOWER_RANGE + 1) % (UPPER_RANGE - LOWER_RANGE + 1)) + LOWER_RANGE
+        append the character corresponding to the offset to decryptedText
+    return decryptedText
